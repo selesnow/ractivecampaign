@@ -1,0 +1,27 @@
+# export
+export(ac_get_accounts)
+export(ac_get_campaigns_aggregate_revenues)
+export(ac_get_campaigns_messages)
+export(ac_get_campaigns)
+export(ac_get_contacts)
+export(ac_get_custom_account_fields_values)
+export(ac_get_custom_account_fields)
+export(ac_get_custom_contact_fields_values)
+export(ac_get_custom_contact_fields)
+export(ac_get_custom_deal_fields_values)
+export(ac_get_custom_deal_fields)
+export(ac_get_deal_stages)
+export(ac_get_deals)
+export(ac_get_messages)
+export(ac_get_deal_piplines)
+export(ac_auth)
+
+# import
+import(dplyr)
+import(tidyr)
+import(httr)
+import(stringr)
+import(cli)
+
+# import from
+importFrom(pbapply, pblapply)
