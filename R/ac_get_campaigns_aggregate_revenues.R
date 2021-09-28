@@ -17,6 +17,8 @@ ac_get_campaigns_aggregate_revenues <- function(
   campaign_ids
 ) {
 
+  ac_check_auth()
+
   # send requests
   list_data <- pblapply(campaign_ids, function(cid) {
 

@@ -19,3 +19,12 @@ ac_auth <- function(
 
   cli_alert_success("API token and url set successfully!")
 }
+
+ac_check_auth <- function() {
+
+  if ( identical(Sys.getenv("ACTIVECAMPAGN_API_TOKEN"), "") | identical(Sys.getenv("ACTIVECAMPAGN_API_URL"), "") ) {
+
+    stop("Unauthorize! Please set API URL and Token in system variable ACTIVECAMPAGN_API_TOKEN and ACTIVECAMPAGN_API_URL, or use ac_auth() for authorization.")
+
+  }
+}

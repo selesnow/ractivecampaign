@@ -18,6 +18,8 @@ ac_get_deal_piplines <- function(
   have_stages = NULL
 ) {
 
+  ac_check_auth()
+
   # vars
   is_first_iteration <- TRUE
   limit  <- 100

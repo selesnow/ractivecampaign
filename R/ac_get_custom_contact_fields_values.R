@@ -19,6 +19,8 @@ ac_get_custom_contact_fields_values <- function(
   val = NULL
 ) {
 
+  ac_check_auth()
+
   # vars
   is_first_iteration <- TRUE
   limit  <- 100

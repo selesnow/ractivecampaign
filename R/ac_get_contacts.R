@@ -56,6 +56,8 @@ ac_get_contacts <- function(
   in_group_lists = NULL
 ) {
 
+  ac_check_auth()
+
   # vars
   is_first_iteration <- TRUE
   limit  <- 100

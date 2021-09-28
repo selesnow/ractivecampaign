@@ -17,6 +17,8 @@ ac_get_campaigns_messages <- function(
   campaign_ids
 ) {
 
+  ac_check_auth()
+
   # send requests
   list_data <- pblapply(campaign_ids, function(cid) {
     ans <- GET(str_glue("{Sys.getenv('ACTIVECAMPAGN_API_URL')}/api/3/campaigns/{cid}/campaignMessages"),

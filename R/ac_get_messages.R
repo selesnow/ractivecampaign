@@ -14,6 +14,8 @@
 ac_get_messages <- function(
 ){
 
+  ac_check_auth()
+
   # vars
   is_first_iteration <- TRUE
   limit  <- 100

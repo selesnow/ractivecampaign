@@ -20,6 +20,8 @@ ac_get_accounts <- function(
   count_deals = FALSE
   ){
 
+  ac_check_auth()
+
   # vars
   is_first_iteration <- TRUE
   limit  <- 100

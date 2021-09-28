@@ -13,6 +13,8 @@
 #' }
 ac_get_custom_deal_fields <- function() {
 
+  ac_check_auth()
+
   # vars
   is_first_iteration <- TRUE
   limit  <- 100

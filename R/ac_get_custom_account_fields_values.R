@@ -17,6 +17,8 @@ ac_get_custom_account_fields_values <- function(
   customer_account_id = NULL
 ){
 
+  ac_check_auth()
+
   # vars
   is_first_iteration <- TRUE
   limit  <- 100

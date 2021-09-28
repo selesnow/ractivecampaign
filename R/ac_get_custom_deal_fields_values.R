@@ -17,6 +17,8 @@ ac_get_custom_deal_fields_values <- function(
   deal_id = NULL
 ) {
 
+  ac_check_auth()
+
   # vars
   is_first_iteration <- TRUE
   limit  <- 100

@@ -20,6 +20,8 @@ ac_get_deal_stages <- function(
   d_groupid = NULL
 ) {
 
+  ac_check_auth()
+
   # vars
   is_first_iteration <- TRUE
   limit  <- 100
