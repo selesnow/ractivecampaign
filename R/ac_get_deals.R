@@ -111,7 +111,7 @@ ac_get_deals <- function(
   }
 
   res <- bind_rows(res)%>%
-         mutate(value = as.numeric(value) / 100)
+         mutate(value = as.numeric('value') / 100)
 
   return(res)
 }
