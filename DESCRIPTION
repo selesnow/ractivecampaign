@@ -1,7 +1,7 @@
 Package: ractivecampaign
 Type: Package
-Title: Loading Data From 'ActiveCampaign API v3'
-Version: 0.1.0
+Title: Loading Data from 'ActiveCampaign API v3'
+Version: 0.1.1
 Authors@R: 
     c(person(given  = "Alexey",
              family = "Seleznev",
@@ -12,7 +12,7 @@ Authors@R:
              role = c("cph")))
 Description: Interface for loading data from 'ActiveCampaign API v3' 
     <https://developers.activecampaign.com/reference>. Provide functions
-    for getting data by deals, contacts, accounts, campaigns and messeges.
+    for getting data by deals, contacts, accounts, campaigns and messages.
 Imports: dplyr, httr, pbapply, stringr, tidyr, cli
 License: MIT + file LICENSE
 Encoding: UTF-8
