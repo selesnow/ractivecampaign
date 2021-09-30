@@ -20,7 +20,35 @@ ac_auth <- function(
   cli_alert_success("API token and url set successfully!")
 }
 
+ac_manual_auth <- function() {
+
+  while ( identical( Sys.getenv('ACTIVECAMPAGN_API_TOKEN'), '' ) ) {
+
+    key <- readline("API Key: ")
+
+    if ( key == '' ) {
+      cli_alert_warning("Please set your API Key, for detail see https://developers.activecampaign.com/reference#authentication")
+    } else {
+      Sys.setenv('ACTIVECAMPAGN_API_TOKEN' = key)
+    }
+  }
+
+  while ( identical( Sys.getenv('ACTIVECAMPAGN_API_URL'), '' ) ) {
+
+    url <- readline("API Url: ")
+
+    if ( url == '' ) {
+      cli_alert_warning("Please set your API URL, for detail see https://developers.activecampaign.com/reference#authentication")
+    } else {
+      Sys.setenv('ACTIVECAMPAGN_API_URL' = url)
+    }
+  }
+
+}
+
 ac_check_auth <- function() {
+
+  if ( interactive() ) ac_manual_auth()
 
   if ( identical(Sys.getenv("ACTIVECAMPAGN_API_TOKEN"), "") | identical(Sys.getenv("ACTIVECAMPAGN_API_URL"), "") ) {
 
@@ -28,3 +56,4 @@ ac_check_auth <- function() {
 
   }
 }
+
