@@ -44,6 +44,8 @@ ac_manual_auth <- function() {
     }
   }
 
+  cli_alert_success("API token and url set successfully!")
+
 }
 
 ac_check_auth <- function() {
