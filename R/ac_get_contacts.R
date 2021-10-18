@@ -65,36 +65,36 @@ ac_get_contacts <- function(
   total  <- NA
   res    <- list()
 
-  # query
-  qry <- list(limit  = limit,
-              offset = offset,
-              email = email,
-              email_like = email_like,
-              exclude = exclude,
-              formid = formid,
-              id_greater = id_greater,
-              id_less = id_less,
-              listid = listid,
-              search = search,
-              segmentid = segmentid,
-              seriesid = seriesid,
-              status = status,
-              tagid = tagid,
-              "filters[created_before]" = created_before,
-              "filters[created_after]" = created_after,
-              "filters[updated_before]" = updated_before,
-              "filters[updated_after]" = updated_after,
-              "filters[waitid]" = waitid,
-              in_group_lists = in_group_lists)
-
-  # q param
-  if ( !is.null(ids) ) {
-    # ids
-    ids <- lapply(ids, function(x) list("ids[]" = x))
-    qry <- append(qry, unlist(ids))
-  }
-
   while ( (is.na(total) | offset <= total) | is_first_iteration  ) {
+
+    # query
+    qry <- list(limit  = limit,
+                offset = offset,
+                email = email,
+                email_like = email_like,
+                exclude = exclude,
+                formid = formid,
+                id_greater = id_greater,
+                id_less = id_less,
+                listid = listid,
+                search = search,
+                segmentid = segmentid,
+                seriesid = seriesid,
+                status = status,
+                tagid = tagid,
+                "filters[created_before]" = created_before,
+                "filters[created_after]" = created_after,
+                "filters[updated_before]" = updated_before,
+                "filters[updated_after]" = updated_after,
+                "filters[waitid]" = waitid,
+                in_group_lists = in_group_lists)
+
+    # q param
+    if ( !is.null(ids) ) {
+      # ids
+      ids <- lapply(ids, function(x) list("ids[]" = x))
+      qry <- append(qry, unlist(ids))
+    }
 
     # send request
     ans <- GET(str_glue("{Sys.getenv('ACTIVECAMPAGN_API_URL')}/api/3/contacts"),
@@ -108,7 +108,7 @@ ac_get_contacts <- function(
     }
 
     out_data <- tibble(data = data$contacts) %>%
-             unnest_wider(data)
+                unnest_wider(data)
 
     is_first_iteration <- FALSE
     offset <- offset + limit
