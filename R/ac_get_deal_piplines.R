@@ -48,7 +48,7 @@ ac_get_deal_piplines <- function(
 
     is_first_iteration <- FALSE
     offset <- offset + limit
-    total  <- data$meta$total
+    total  <- as.numeric(data$meta$total)
     res <- append(res, list(out_data))
 
     Sys.sleep(0.25)
