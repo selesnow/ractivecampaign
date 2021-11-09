@@ -14,6 +14,8 @@ export(ac_get_deal_stages)
 export(ac_get_deals)
 export(ac_get_messages)
 export(ac_get_deal_piplines)
+export(ac_get_deal_activities)
+export(ac_get_users)
 export(ac_auth)
 
 # import
