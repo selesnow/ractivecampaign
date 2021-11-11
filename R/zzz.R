@@ -4,6 +4,22 @@
 
 }
 
+.onLoad <- function(libname, pkgname) {
+
+  op <- options()
+
+  op.ractivecampaig <- list(
+    ractivecampaig.max_tries = 15,
+    ractivecampaig.interval  = 10
+  )
+
+  toset <- !(names(op.ractivecampaig) %in% names(op))
+  if (any(toset)) options(op.ractivecampaig[toset])
+
+  invisible()
+
+}
+
 
 ractivecampaignWelcomeMessage <- function(){
   # library(utils)

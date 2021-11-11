@@ -22,9 +22,16 @@ ac_get_deal_activities <- function(
   # send requests
   list_data <- pblapply(deal_id, function(did) {
 
-    ans <- GET(str_glue("{Sys.getenv('ACTIVECAMPAGN_API_URL')}/api/3/deals/{did}/dealActivities"),
-               query = list(limit  = 100),
-               add_headers("Api-Token" = Sys.getenv('ACTIVECAMPAGN_API_TOKEN')))
+    retry(
+      {
+      ans <- GET(str_glue("{Sys.getenv('ACTIVECAMPAGN_API_URL')}/api/3/deals/{did}/dealActivities"),
+                 query = list(limit  = 100),
+                 add_headers("Api-Token" = Sys.getenv('ACTIVECAMPAGN_API_TOKEN')))
+      },
+      until = ~ status_code(.) == 200,
+      interval  = getOption('ractivecampaig.max_tries'),
+      max_tries = getOption('ractivecampaig.interval')
+    )
 
     data <- content(ans)
 

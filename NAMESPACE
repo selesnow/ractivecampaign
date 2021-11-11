@@ -26,6 +26,7 @@ import(tidyr)
 import(httr)
 import(stringr)
 import(cli)
+import(retry)
 
 # import from
 importFrom(pbapply, pblapply)
