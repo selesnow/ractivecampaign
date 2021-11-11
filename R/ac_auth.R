@@ -2,6 +2,7 @@
 #'
 #' @param url API URL
 #' @param key API Key
+#' @param verbose Manage output console message
 #'
 #' @description Your API key can be found in your account on the Settings page under the "Developer" tab. Each user in your ActiveCampaign account has their own unique API key.
 #'

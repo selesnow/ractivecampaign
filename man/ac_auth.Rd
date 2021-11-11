@@ -4,12 +4,14 @@
 \alias{ac_auth}
 \title{Authorization. Set API URL and Key}
 \usage{
-ac_auth(url, key)
+ac_auth(url, key, verbose = TRUE)
 }
 \arguments{
 \item{url}{API URL}
 
 \item{key}{API Key}
+
+\item{verbose}{Manage output console message}
 }
 \value{
 No return value, called for side effects
