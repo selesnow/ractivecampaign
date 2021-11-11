@@ -10,17 +10,18 @@
 #' @export
 ac_auth <- function(
   url,
-  key
+  key,
+  verbose = TRUE
 ) {
 
   # set environ variables
   Sys.setenv('ACTIVECAMPAGN_API_TOKEN' = key)
   Sys.setenv('ACTIVECAMPAGN_API_URL' = url)
 
-  cli_alert_success("API token and url set successfully!")
+  if (verbose) cli_alert_success("API token and url set successfully!")
 }
 
-ac_manual_auth <- function() {
+ac_manual_auth <- function(verbose = TRUE) {
 
   while ( identical( Sys.getenv('ACTIVECAMPAGN_API_TOKEN'), '' ) ) {
 
@@ -44,13 +45,13 @@ ac_manual_auth <- function() {
     }
   }
 
-  cli_alert_success("API token and url set successfully!")
+  if (verbose) cli_alert_success("API token and url set successfully!")
 
 }
 
 ac_check_auth <- function() {
 
-  if ( interactive() ) ac_manual_auth()
+  if ( interactive() ) ac_manual_auth(verbose = FALSE)
 
   if ( identical(Sys.getenv("ACTIVECAMPAGN_API_TOKEN"), "") | identical(Sys.getenv("ACTIVECAMPAGN_API_URL"), "") ) {
 
