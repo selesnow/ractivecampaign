@@ -27,10 +27,17 @@ ac_get_campaigns <- function(
   while ( (is.na(total) | offset <= total) | is_first_iteration  ) {
 
     # send request
-    ans <- GET(str_glue("{Sys.getenv('ACTIVECAMPAGN_API_URL')}/api/3/campaigns"),
-               query = list(limit  = limit,
-                            offset = offset),
-               add_headers("Api-Token" = Sys.getenv('ACTIVECAMPAGN_API_TOKEN')))
+    retry(
+      {
+        ans <- GET(str_glue("{Sys.getenv('ACTIVECAMPAGN_API_URL')}/api/3/campaigns"),
+                   query = list(limit  = limit,
+                                offset = offset),
+                   add_headers("Api-Token" = Sys.getenv('ACTIVECAMPAGN_API_TOKEN')))
+        },
+        until = ~ status_code(.) == 200,
+        interval  = getOption('ractivecampaig.max_tries'),
+        max_tries = getOption('ractivecampaig.interval')
+    )
 
     data <- content(ans)
 

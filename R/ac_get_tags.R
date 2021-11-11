@@ -26,11 +26,19 @@ ac_get_tags <- function(
   while ( (is.na(total) | offset <= total) | is_first_iteration  ) {
 
     # send request
+    retry(
+      {
     ans <- GET(str_glue("{Sys.getenv('ACTIVECAMPAGN_API_URL')}/api/3/tags"),
                query = list(limit  = limit,
                             offset = offset,
                             search = search),
                add_headers("Api-Token" = Sys.getenv('ACTIVECAMPAGN_API_TOKEN')))
+      },
+    until = ~ status_code(.) == 200,
+    interval  = getOption('ractivecampaig.max_tries'),
+    max_tries = getOption('ractivecampaig.interval')
+    )
+
 
     data <- content(ans)
 

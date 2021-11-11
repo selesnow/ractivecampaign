@@ -69,30 +69,37 @@ ac_get_deals <- function(
   while ( (is.na(total) | offset <= total) | is_first_iteration  ) {
 
     # send request
-    ans <- GET(str_glue("{Sys.getenv('ACTIVECAMPAGN_API_URL')}/api/3/deals"),
-               query = list(limit  = limit,
-                            offset = offset,
-                            "filters[search]"             = search,
-                            "filters[search_field]"       = search_field,
-                            "filters[title]"              = title,
-                            "filters[stage]"              = stage,
-                            "filters[group]"              = group,
-                            "filters[status]"             = status,
-                            "filters[owner]"              = owner,
-                            "filters[nextdate_range]"     = nextdate_range,
-                            "filters[tag]"                = tag,
-                            "filters[tasktype]"           = tasktype,
-                            "filters[created_before]"     = created_before,
-                            "filters[created_after]"      = created_after,
-                            "filters[updated_before]"     = updated_before,
-                            "filters[updated_after]"      = updated_after,
-                            "filters[organization]"       = organization,
-                            "filters[minimum_value]"      = minimum_value,
-                            "filters[maximum_value]"      = maximum_value,
-                            "filters[score_greater_than]" = score_greater_than,
-                            "filters[score_less_than]"    = score_less_than,
-                            "filters[score]"              = score_less_than),
-               add_headers("Api-Token" = Sys.getenv('ACTIVECAMPAGN_API_TOKEN')))
+    retry(
+      {
+      ans <- GET(str_glue("{Sys.getenv('ACTIVECAMPAGN_API_URL')}/api/3/deals"),
+                 query = list(limit  = limit,
+                              offset = offset,
+                              "filters[search]"             = search,
+                              "filters[search_field]"       = search_field,
+                              "filters[title]"              = title,
+                              "filters[stage]"              = stage,
+                              "filters[group]"              = group,
+                              "filters[status]"             = status,
+                              "filters[owner]"              = owner,
+                              "filters[nextdate_range]"     = nextdate_range,
+                              "filters[tag]"                = tag,
+                              "filters[tasktype]"           = tasktype,
+                              "filters[created_before]"     = created_before,
+                              "filters[created_after]"      = created_after,
+                              "filters[updated_before]"     = updated_before,
+                              "filters[updated_after]"      = updated_after,
+                              "filters[organization]"       = organization,
+                              "filters[minimum_value]"      = minimum_value,
+                              "filters[maximum_value]"      = maximum_value,
+                              "filters[score_greater_than]" = score_greater_than,
+                              "filters[score_less_than]"    = score_less_than,
+                              "filters[score]"              = score_less_than),
+                 add_headers("Api-Token" = Sys.getenv('ACTIVECAMPAGN_API_TOKEN')))
+      },
+      until = ~ status_code(.) == 200,
+      interval  = getOption('ractivecampaig.max_tries'),
+      max_tries = getOption('ractivecampaig.interval')
+    )
 
     data <- content(ans)
 
