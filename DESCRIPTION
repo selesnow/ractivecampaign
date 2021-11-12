@@ -1,7 +1,7 @@
 Package: ractivecampaign
 Type: Package
 Title: Loading Data from 'ActiveCampaign API v3'
-Version: 0.1.1.9000
+Version: 0.2.0
 Authors@R: 
     c(person(given  = "Alexey",
              family = "Seleznev",
