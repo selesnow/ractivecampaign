@@ -16,10 +16,12 @@
 * `ac_get_deal_piplines()` - Список групп этапов сделок
 * `ac_get_deal_stages()` - Список этапов сделок
 * `ac_get_deal_activities()` - Список активностей по сделке
-* `ac_get_contacts()` - Список контактов
 * `ac_get_users()` - Список пользователей
+* `ac_get_tags()` - Получить список всех созданных тегов
+* `ac_get_contacts()` - Список контактов
 * `ac_get_custom_contact_fields_values()` - Значения пользовательских полей контактов
 * `ac_get_custom_contact_fields()` - Список пользовательских полей этапов
+* `ac_get_contact_tags` - Получить теги определённых контактов.
 * `ac_get_campaigns()` - Список кампаний
 * `ac_get_campaigns_aggregate_revenues()` - Дохход по кампаниям
 * `ac_get_campaigns_messages()` - Список сообщений кампаний
@@ -42,6 +44,28 @@ devtools::install_github('selesnow/ractivecampaign')
 Для авторизации вам необходимо найти в аккаунте URL и Ключ API, для этого перейдите в основном меню перейдите в Settings > Developer, там вы найдёте нужные данные.
 
 ![](http://img.netpeak.ua/alsey/OK2MD.png)
+
+# Пример
+```r
+library(ractivecampaign)
+library(ggplot2)
+  
+# auth
+ac_auth(url = 'Ваш API URL', key = 'Ваш API Key')
+# get deals
+deals <- ac_get_deals()
+  
+# analyze
+deals %>% 
+  mutate(date = as.Date(cdate)) %>% 
+  group_by(date) %>% 
+  summarise(deals = n_distinct(id)) %>% 
+  ggplot( aes(date, deals) ) +
+  geom_line() + geom_point() +
+  labs(title = 'Deals by date from ActiveCampaign')
+```
+
+![](man/figures/demo_plot_1.png)
 
 ### Автор пакета
 Алексей Селезнёв, Head of analytics dept. at [Netpeak](https://netpeak.net)
