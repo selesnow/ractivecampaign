@@ -44,7 +44,7 @@ ac_get_custom_deal_fields <- function() {
     }
 
     out_data <- tibble(data = data$dealCustomFieldMeta) %>%
-                unnest_wider(data)
+                unnest_wider(data, transform = list(fieldDefault = function(x) paste(x, sep = ', ')))
 
     is_first_iteration <- FALSE
     offset <- offset + limit
@@ -59,3 +59,5 @@ ac_get_custom_deal_fields <- function() {
 
   return(res)
 }
+names(res[[1]])
+res[[2]]$fieldDefault
