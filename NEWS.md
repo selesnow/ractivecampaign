@@ -1,3 +1,8 @@
+# ractivecampaign (development version)
+
+* Повышена стабильность работы функции `ac_get_contacts()`
+* Исправил ошибку с перепутанным чтением опций ractivecampaig.interval и ractivecampaig.max_tries.
+
 # ractivecampaign 0.2.0
 
 * Небольшое исправление функции `ac_get_deal()`, связано с расчётом поля values, ранее оно при переводе в число возвращало NA.

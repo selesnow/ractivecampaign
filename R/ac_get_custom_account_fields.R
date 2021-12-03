@@ -35,8 +35,8 @@ ac_get_custom_account_fields <- function(
                  add_headers("Api-Token" = Sys.getenv('ACTIVECAMPAGN_API_TOKEN')))
     },
     until = ~ status_code(.) == 200,
-    interval  = getOption('ractivecampaig.max_tries'),
-    max_tries = getOption('ractivecampaig.interval')
+    interval  = getOption('ractivecampaig.interval'),
+    max_tries = getOption('ractivecampaig.max_tries')
     )
 
 
