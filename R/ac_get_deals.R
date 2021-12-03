@@ -58,10 +58,15 @@ ac_get_deals <- function(
 ) {
 
   # cli options
-  oldpar <- options(asdf)
+  oldpar <- options(
+    'cli.progress_show_after',
+    'cli.progress_clear',
+    'cli.spinner'
+  )
+
   on.exit(options(oldpar))
 
-
+  ac_progress_bar_set()
 
   ac_check_auth()
 
