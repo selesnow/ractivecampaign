@@ -59,5 +59,3 @@ ac_get_custom_deal_fields <- function() {
 
   return(res)
 }
-names(res[[1]])
-res[[2]]$fieldDefault
