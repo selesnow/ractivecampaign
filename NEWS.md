@@ -2,6 +2,7 @@
 
 * Повышена стабильность работы функции `ac_get_contacts()`
 * Исправил ошибку с перепутанным чтением опций ractivecampaig.interval и ractivecampaig.max_tries.
+* Добавил progressbar в некоторые функции загрузки данных.
 
 # ractivecampaign 0.2.0
 

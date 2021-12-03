@@ -57,6 +57,12 @@ ac_get_deals <- function(
   score              = NULL
 ) {
 
+  # cli options
+  oldpar <- options(asdf)
+  on.exit(options(oldpar))
+
+
+
   ac_check_auth()
 
   # vars
@@ -65,6 +71,9 @@ ac_get_deals <- function(
   offset <- 0
   total  <- NA
   res    <- list()
+
+  # pb
+  cli_progress_bar("Loading deals")
 
   while ( (is.na(total) | offset <= total) | is_first_iteration  ) {
 
@@ -116,8 +125,13 @@ ac_get_deals <- function(
     res <- append(res, list(out_data))
 
     Sys.sleep(0.25)
+    # pb
+    cli_progress_update()
 
   }
+
+  # pb
+  cli_progress_update(force = TRUE)
 
   res <- bind_rows(res) %>%
          mutate(value = as.numeric(value) / 100)
