@@ -4,6 +4,7 @@
 * Исправил ошибку с перепутанным чтением опций ractivecampaig.interval и ractivecampaig.max_tries.
 * Добавил progressbar в некоторые функции загрузки данных.
 * Исправлена ошибка в парсере функции `ac_get_custom_deal_fields()`. Ошибка возникала, если какое то поле, по дефолту содержало сразу несколько значений.
+* Исправлена ошибка парсинга в функции `ac_get_custom_deal_fields_values()`: `Error: Can't combine `..1$fieldValue` <character> and `..664$fieldValue` <list>`.
 
 # ractivecampaign 0.2.0
 

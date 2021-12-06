@@ -49,7 +49,7 @@ ac_get_custom_deal_fields_values <- function(
     }
 
     out_data <- tibble(data = data$dealCustomFieldData) %>%
-                unnest_wider(data)
+                unnest_wider(data, transform = list(fieldValue = function(x) paste(x, sep = ', ')))
 
     is_first_iteration <- FALSE
     offset <- offset + limit
