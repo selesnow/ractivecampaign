@@ -5,6 +5,7 @@
 * Добавил progressbar в некоторые функции загрузки данных.
 * Исправлена ошибка в парсере функции `ac_get_custom_deal_fields()`. Ошибка возникала, если какое то поле, по дефолту содержало сразу несколько значений.
 * Исправлена ошибка парсинга в функции `ac_get_custom_deal_fields_values()`: `Error: Can't combine `..1$fieldValue` <character> and `..664$fieldValue` <list>`.
+* Функция `ac_get_custom_deal_fields_values()` теперь корректно обрабатывает входящий вектор идентификаторов сделок.
 
 # ractivecampaign 0.2.0
 

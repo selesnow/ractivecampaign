@@ -19,6 +19,10 @@ ac_get_custom_deal_fields_values <- function(
 
   ac_check_auth()
 
+  if ( length(deal_id) > 0 ) {
+    deal_id <- paste0(deal_id, collapse = ',')
+  }
+
   # vars
   is_first_iteration <- TRUE
   limit  <- 100
