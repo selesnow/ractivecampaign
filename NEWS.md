@@ -1,4 +1,4 @@
-# ractivecampaign (development version)
+# ractivecampaign 0.3.0
 
 * Повышена стабильность работы функции `ac_get_contacts()`
 * Исправил ошибку с перепутанным чтением опций ractivecampaig.interval и ractivecampaig.max_tries.
@@ -6,6 +6,8 @@
 * Исправлена ошибка в парсере функции `ac_get_custom_deal_fields()`. Ошибка возникала, если какое то поле, по дефолту содержало сразу несколько значений.
 * Исправлена ошибка парсинга в функции `ac_get_custom_deal_fields_values()`: `Error: Can't combine `..1$fieldValue` <character> and `..664$fieldValue` <list>`.
 * Функция `ac_get_custom_deal_fields_values()` теперь корректно обрабатывает входящий вектор идентификаторов сделок.
+* Добавлена функция `ac_get_tasks()`, которая позволяет запрашивать данные о задачах.
+* Добавлена функция `ac_get_deal_notes()`, которая позволяет запрашивать заметки из задач.
 
 # ractivecampaign 0.2.0
 

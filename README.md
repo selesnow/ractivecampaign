@@ -16,6 +16,7 @@
 * `ac_get_deal_piplines()` - Список групп этапов сделок
 * `ac_get_deal_stages()` - Список этапов сделок
 * `ac_get_deal_activities()` - Список активностей по сделке
+* `ac_get_deal_notes()` - Список заметок к сделке
 * `ac_get_users()` - Список пользователей
 * `ac_get_tags()` - Получить список всех созданных тегов
 * `ac_get_contacts()` - Список контактов
@@ -26,15 +27,18 @@
 * `ac_get_campaigns_aggregate_revenues()` - Дохход по кампаниям
 * `ac_get_campaigns_messages()` - Список сообщений кампаний
 * `ac_get_messages()` - Список всех сообщений
-
+* `ac_get_tasks()` - Список задач
 
 
 ## Установка
 
-На данный момент пакет доступн для установки из GitHub:
+На данный момент пакет доступн для установки из CRAN или GitHub:
 
 ``` r
-# install.packages("ractivecampaign")
+# from CRAN
+install.packages("ractivecampaign")
+
+# from GitHub
 install.packages("devtools")
 devtools::install_github('selesnow/ractivecampaign')
 ```
