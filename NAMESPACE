@@ -18,6 +18,8 @@ export(ac_get_deal_activities)
 export(ac_get_users)
 export(ac_get_contact_tags)
 export(ac_get_tags)
+export(ac_get_tasks)
+export(ac_get_deal_notes)
 export(ac_auth)
 
 # import
