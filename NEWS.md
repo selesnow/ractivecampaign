@@ -1,3 +1,7 @@
+# ractivecampaign (development version)
+
+* В функции `ac_get_deal_activities()` исправлена ошибка возникающая если по сделки не было никаких действий.
+
 # ractivecampaign 0.3.0
 
 * Повышена стабильность работы функции `ac_get_contacts()`

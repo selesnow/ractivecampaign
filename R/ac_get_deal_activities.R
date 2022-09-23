@@ -28,12 +28,17 @@ ac_get_deal_activities <- function(
                  query = list(limit  = 100),
                  add_headers("Api-Token" = Sys.getenv('ACTIVECAMPAGN_API_TOKEN')))
       },
-      until = ~ status_code(.) == 200,
+      until = ~ status_code(.) == 200 || grepl(pattern = "No Result found", x = content(.)$message, ignore.case = T),
       interval  = getOption('ractivecampaig.interval'),
       max_tries = getOption('ractivecampaig.max_tries')
     )
 
     data <- content(ans)
+
+    if ( !is.null(data$message) ) {
+      warning(data$message)
+      return(NULL)
+    }
 
     if ( status_code(ans) > 299 ) {
       stop(data$message)
