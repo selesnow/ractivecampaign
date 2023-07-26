@@ -1,4 +1,8 @@
-# ractivecampaign (development version)
+# ractivecampaign 0.5.0
+
+* В пакет добавлена функци `ac_get_user_groups()`, позволяющая запрашивать метаданные групп пользователей. 
+
+# ractivecampaign 0.4.0
 
 * В функции `ac_get_deal_activities()` исправлена ошибка возникающая если по сделки не было никаких действий.
 

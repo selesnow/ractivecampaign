@@ -18,6 +18,7 @@
 * `ac_get_deal_activities()` - Список активностей по сделке
 * `ac_get_deal_notes()` - Список заметок к сделке
 * `ac_get_users()` - Список пользователей
+* `ac_get_user_groups()` - Список групп пользователей
 * `ac_get_tags()` - Получить список всех созданных тегов
 * `ac_get_contacts()` - Список контактов
 * `ac_get_custom_contact_fields_values()` - Значения пользовательских полей контактов
