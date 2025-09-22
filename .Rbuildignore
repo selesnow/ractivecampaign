@@ -4,3 +4,4 @@
 R/hello.R
 \_config\.yml$
 ^CRAN-SUBMISSION$
+^cran-comments\.md$
